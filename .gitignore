@@ -1,8 +1,19 @@
 # Dependencies
-node_modules/
+node_modules
+.pnp
+.pnp.js
 
-# Environment variables (SECRETS)
+# Environment variables (secrets)
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build output
+build
+dist
+coverage
 
 # Logs
 npm-debug.log*
