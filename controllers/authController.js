@@ -30,8 +30,14 @@ const register = async (req, res) => {
 
     await user.save();
 
+    // I have added token mechanism here - dedlinux
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+
     return res.status(201).json({
-      message: "User registered successfully"
+      message: "User registered successfully",
+      token,
+      role: user.role,
+      user: { id: user._id, name: user.name, email: user.email }
     });
   } catch (error) {
     console.error("Register error:", error);
