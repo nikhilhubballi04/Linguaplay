@@ -13,8 +13,15 @@ const loginLimiter = rateLimit({
   }
 });
 
+const registerLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 3, // Limit each IP to 3 registrations per hour
+  message: { message: "Too many accounts created. Try again later." }
+});
+
 // AUTH ROUTES
 router.post("/register", register);
 router.post("/login", loginLimiter, login);
+router.post("/register", registerLimiter, register); // Apply here
 
 module.exports = router;

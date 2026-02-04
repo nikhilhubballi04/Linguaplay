@@ -36,9 +36,7 @@ app.use(globalLimiter);
 app.use("/api/auth", authRoutes);
 app.use("/api/flashcards", flashcardRoutes);
 app.use("/api/progress", progressRoutes);
-app.use("/api/admin", adminRoutes); // ✅ admin analytics
-app.use("/api/flashcards", require("./routes/flashcardRoutes"));
-app.use("/api/progress", require("./routes/progressRoutes"));
+app.use("/api/admin", adminRoutes);
 
 
 // =====================
@@ -48,9 +46,7 @@ app.get("/", (req, res) => {
   res.send("LinguaPlay Backend Running");
 });
 
-// =====================
-// DATABASE + SERVER
-// =====================
+
 mongoose
   .connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/linguaplay")
   .then(() => {
