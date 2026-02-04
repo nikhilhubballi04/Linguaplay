@@ -9,7 +9,7 @@ require("dotenv").config();
 const authRoutes = require("./routes/authRoutes");
 const flashcardRoutes = require("./routes/flashcardRoutes");
 const progressRoutes = require("./routes/progressRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+const adminRoutes = require("./routes/adminRoutes"); // ✅ admin routes
 
 const app = express();
 
@@ -36,7 +36,7 @@ app.use(globalLimiter);
 app.use("/api/auth", authRoutes);
 app.use("/api/flashcards", flashcardRoutes);
 app.use("/api/progress", progressRoutes);
-app.use("/api/admin", adminRoutes); // ✅ admin analytics
+app.use("/api/admin", adminRoutes);
 
 
 // =====================
