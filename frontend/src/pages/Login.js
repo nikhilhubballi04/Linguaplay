@@ -10,7 +10,6 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState("");
     const navigate = useNavigate();
     const canvasRef = useRef(null);
 
@@ -85,8 +84,6 @@ const Login = () => {
             } else {
                 await API.post("/auth/register", {name, email, password});
                 setIsLogin(true);
-                // Use a separate state for success messages or a clearer key
-                setSuccess("Account created! Please login 😊");
             }
         } catch (err) {
             // Provide a more accurate fallback depending on the mode
